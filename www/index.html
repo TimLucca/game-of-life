@@ -6,8 +6,14 @@
     <title>Game of Life Rust WASM</title>
   </head>
   <body>
-    <canvas id="game-of-life-canvas"></canvas>
-    <button id="toggle">Start</button>
+    <div class="container">
+      <canvas id="game-of-life-canvas"></canvas>
+      <div class="side">
+        <input type="range" id="speed" min="1" max="30" value="15">
+        <p>FPS: <spad id="fps"></spad></p>
+        <button id="toggle">Start</button>
+      </div>
+    </div>
     <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
     <script src="./bootstrap.js"></script>
   </body>

@@ -3,11 +3,11 @@ extern crate js_sys;
 extern crate fixedbitset;
 extern crate web_sys;
 
-macro_rules! log {
-    ( $( $t:tt )*) => {
-        web_sys::console::log_1(&format!( $( $t )* ).into());
-    };
-}
+// macro_rules! log {
+//     ( $( $t:tt )*) => {
+//         web_sys::console::log_1(&format!( $( $t )* ).into());
+//     };
+// }
 
 use wasm_bindgen::prelude::*;
 use fixedbitset::FixedBitSet;
@@ -45,6 +45,15 @@ pub struct Universe {
     height: u32,
     cells: FixedBitSet,
 }
+
+// impl Cell {
+//     fn toggle(&mut self) {
+//         *self = match *self {
+//             Cell::Dead => Cell::Alive,
+//             Cell::Alive => Cell:Dead,
+//         }
+//     }
+// }
 
 #[wasm_bindgen]
 impl Universe {
@@ -168,6 +177,11 @@ impl Universe {
             // cells.set(i, js_sys::Math::random() > 0.5)
             self.cells.set(i, false)
         }
+    }
+
+    pub fn toggle_cell(&mut self, row: u32, column: u32) {
+        let index = self.get_index(row, column);
+        self.cells.set(index, self.cells[index] ^ true);
     }
 
     pub fn cells(&self) -> *const u32 {

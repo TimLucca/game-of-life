@@ -20,6 +20,14 @@ const ctx = canvas.getContext('2d');
 
 var run = false;
 
+const slider = document.getElementById("speed");
+const output = document.getElementById("fps");
+output.innerHTML = slider.value;
+
+slider.oninput = () => {
+  output.innerHTML = slider.value;
+}
+
 const getIndex = (row, column) => {
   return row * width + column;
 };
@@ -31,7 +39,7 @@ const renderLoop = () => {
   universe.tick();
   drawGrid();
   drawCells();
-  sleep(150).then(() => {
+  sleep(1000 / slider.value).then(() => {
     requestAnimationFrame(renderLoop);
   });
 };
@@ -94,6 +102,21 @@ toggle.onclick = () => {
     toggle.textContent = "Start";
   }
 };
+
+canvas.addEventListener("click", e => {
+  const boundingRect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / boundingRect.width;
+  const scaleY = canvas.height / boundingRect.height;
+  const canvasLeft = (e.clientX - boundingRect.left) * scaleX;
+  const canvasTop = (e.clientY - boundingRect.top) * scaleY;
+  const row = Math.min(Math.floor(canvasTop / (CELL_SIZE + 1)), height - 1);
+  const col = Math.min(Math.floor(canvasLeft / (CELL_SIZE + 1)), width - 1);
+
+  universe.toggle_cell(row, col);
+
+  drawGrid();
+  drawCells();
+})
 
 const sleep = (milliseconds) => {
   return new Promise(resolve => setTimeout(resolve, milliseconds))
