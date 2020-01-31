@@ -1,4 +1,5 @@
 # Game of Life
+A derivative of [this guide](https://rustwasm.github.io/book/game-of-life)
 
 ## Play now
 [The live deployment can be accessed here ](https://www.github.com/TimLucca/game-of-life)
@@ -9,7 +10,7 @@ Note: This project assumes you have [rust](https://www.rust-lang.org/tools/insta
 
 1. Install the [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)
 2. Use the command `wasm-pack build` in the root directory to build the Rust code
-3. Navigate to the `www` folder (`cd www`) and use the command `npm install` to install the JavaScript dependancies
+3. Navigate to the `www` folder (`cd www`) and use the command `npm install` to install the JavaScript dependencies
 4. In the `www` folder, use the command `npm run start`.
 5. In your browser, enter `localhost:8080` as the url
 6. Play the game!
