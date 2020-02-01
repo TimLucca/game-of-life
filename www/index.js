@@ -4,7 +4,7 @@ import { memory } from "rust-gol/rust_gol_bg";
 // greet("Play the game");
 const toggle = document.getElementById("toggle")
 const canvas = document.getElementById("game-of-life-canvas");
-const universe = Universe.new();
+const universe = Universe.new(1);
 const width = universe.width();
 const height = universe.height();
 

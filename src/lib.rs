@@ -120,7 +120,7 @@ impl Universe {
     }
 
     // Create a new universe
-    pub fn new() -> Universe {
+    pub fn new(start: u32) -> Universe {
         let width: u32 = 32;
         let height: u32 = 32;
 
@@ -135,16 +135,26 @@ impl Universe {
         let size = (width * height) as usize;
         let mut cells = FixedBitSet::with_capacity(size);
 
-        for i in 0..size {
-            // cells.set(i, js_sys::Math::random() > 0.5)
-            cells.set(i, i % 2 == 0 || i % 7 == 0)
+        if start == 0 {
+            for i in 0..size {
+                cells.set(i, js_sys::Math::random() > 0.5)
+                // cells.set(i, i % 2 == 0 || i % 7 == 0)
+            }
         }
+        
 
-        Universe {
+        let mut universe = Universe {
             width,
             height,
             cells,
-        }
+        };
+
+        match start {
+            1 => universe.set_cells(&[(1,2), (2,3), (3,1), (3,2), (3,3)]),
+            _ => ()
+        };
+
+        universe
     }
 
     // pub fn render(&self) -> String {
