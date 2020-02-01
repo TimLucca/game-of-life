@@ -8,7 +8,8 @@
   },
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -26,9 +27,11 @@
     "url": "https://github.com/rustwasm/create-wasm-app/issues"
   },
   "dependencies": {
+    "gh-pages": "^1.2.0",
+    "gh-pages-deploy": "^0.5.1",
     "rust-gol": "file:../pkg"
   },
-  "homepage": "https://github.com/rustwasm/create-wasm-app#readme",
+  "homepage": "https://github.com/TimLucca.github.io/game-of-life",
   "devDependencies": {
     "hello-wasm-pack": "^0.1.0",
     "webpack": "^4.29.3",
