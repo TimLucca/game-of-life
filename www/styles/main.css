@@ -9,6 +9,8 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 1em;
+  white-space: pre;
+  font-family: monospace;
 }
 
 .container {
