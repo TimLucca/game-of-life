@@ -121,8 +121,8 @@ impl Universe {
 
     // Create a new universe
     pub fn new(start: u32) -> Universe {
-        let width: u32 = 32;
-        let height: u32 = 32;
+        let width: u32 = 40;
+        let height: u32 = 128;
 
         // let cells = (0..width * height).map(|_| {
         //     if js_sys::Math::random() > 0.5 {
@@ -151,6 +151,19 @@ impl Universe {
 
         match start {
             1 => universe.set_cells(&[(1,2), (2,3), (3,1), (3,2), (3,3)]),
+            2 => universe.set_cells(&[
+                // left square
+                (5, 1), (5, 2), (6, 1), (6, 2),
+                // left crescent
+                (5, 11), (6, 11), (7, 11), (4, 12), (8, 12), (3, 13), (9, 13), (3, 14), (9, 14),
+                // // left crescent addition
+                (6, 15), (4, 16), (8, 16), (5, 17), (6, 17), (7, 17), (6, 18),
+                // // right collision
+                (3, 21), (4, 21), (5, 21), (3, 22), (4, 22), (5, 22), (2, 23), (6, 23),
+                (1, 25), (2, 25), (6, 25), (7, 25),
+                // // right square
+                (3, 33), (4, 33), (3, 34), (4, 34)
+                ]),
             _ => ()
         };
 

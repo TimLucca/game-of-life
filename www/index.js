@@ -4,11 +4,11 @@ import { memory } from "rust-gol/rust_gol_bg";
 // greet("Play the game");
 const toggle = document.getElementById("toggle")
 const canvas = document.getElementById("game-of-life-canvas");
-const universe = Universe.new(1);
+const universe = Universe.new(2);
 const width = universe.width();
 const height = universe.height();
 
-const CELL_SIZE = 35; // px
+const CELL_SIZE = 15; // px
 const GRID_COLOR = "#CCCCCC";
 const DEAD_COLOR = "#FFFFFF";
 const ALIVE_COLOR = "#000000";
@@ -40,10 +40,10 @@ const renderLoop = () => {
   universe.tick();
   drawGrid();
   drawCells();
-  requestAnimationFrame(renderLoop);
-  // sleep(1000 / slider.value).then(() => {
-  //   requestAnimationFrame(renderLoop);
-  // });
+  // requestAnimationFrame(renderLoop);
+  sleep(1000 / slider.value).then(() => {
+    requestAnimationFrame(renderLoop);
+  });
 };
 
 const bitIsSet = (n, arr) => {
