@@ -25,7 +25,19 @@ body {
   padding: 1em;
 }
 
+.buttons {
+  display: flex;
+  flex-direction: row;
+}
+
 #toggle {
+  width: fit-content;
+  margin-top: 1em;
+  font-size: 1.5em;
+}
+
+#reset {
+  margin-left: 1em;
   width: fit-content;
   margin-top: 1em;
   font-size: 1.5em;

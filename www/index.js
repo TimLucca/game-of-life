@@ -2,9 +2,11 @@ import { Universe, Cell, greet } from "rust-gol";
 import { memory } from "rust-gol/rust_gol_bg";
 
 // greet("Play the game");
+const reset = document.getElementById("reset")
+const preset = document.getElementById("preset")
 const toggle = document.getElementById("toggle")
 const canvas = document.getElementById("game-of-life-canvas");
-const universe = Universe.new(2);
+let universe = Universe.new(2);
 const width = universe.width();
 const height = universe.height();
 
@@ -135,6 +137,16 @@ toggle.onclick = () => {
     toggle.textContent = "Start";
   }
 };
+
+reset.onclick = () => {
+  if(preset.preset_val.value) {
+    universe = Universe.new(preset.preset_val.value)
+  }
+  if (run) {
+    toggle.onclick()
+  }
+  drawCells()
+}
 
 canvas.addEventListener("click", e => {
   const boundingRect = canvas.getBoundingClientRect();
