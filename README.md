@@ -2,7 +2,7 @@
 A derivative of [this guide](https://rustwasm.github.io/book/game-of-life)
 
 ## Play now
-[The live deployment can be accessed here ](https://www.timlucca.dev/game-of-life/)
+[The live deployment can be accessed here ](https://timlucca.dev/game-of-life/)
 
 ## Building and Running
 Follow this guid if you want to build and run it yourself.
