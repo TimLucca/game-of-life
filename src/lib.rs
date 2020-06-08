@@ -120,9 +120,7 @@ impl Universe {
     }
 
     // Create a new universe
-    pub fn new(start: u32) -> Universe {
-        let width: u32 = 40;
-        let height: u32 = 80;
+    pub fn new(start: u32, width: u32, height: u32) -> Universe {
 
         // let cells = (0..width * height).map(|_| {
         //     if js_sys::Math::random() > 0.5 {

@@ -6,20 +6,35 @@ const reset = document.getElementById("reset")
 const preset = document.getElementById("preset")
 const toggle = document.getElementById("toggle")
 const select_preset = document.getElementById("preset_select")
+const grid = document.getElementById("grid")
+const select_grid = document.getElementById("grid_select")
 const canvas = document.getElementById("game-of-life-canvas");
-let universe = Universe.new(2);
-const width = universe.width();
-const height = universe.height();
+let universe = Universe.new(999, 40, 80);
+let width = universe.width();
+let height = universe.height();
 
-const CELL_SIZE = 15; // px
-const GRID_COLOR = "#CCCCCC";
-const DEAD_COLOR = "#FFFFFF";
-const ALIVE_COLOR = "#000000";
+select_grid.onclick = () => {
+  CELL_SIZE = parseInt(grid.size_cell.value); // px
+  DEAD_COLOR = grid.dead_color.value;
+  ALIVE_COLOR = grid.alive_color.value;
+  height = parseInt(grid.size_y.value)
+  width = parseInt(grid.size_x.value)
+
+  canvas.height = (CELL_SIZE + 1) * height + 1;
+  canvas.width = (CELL_SIZE + 1) * width + 1;
+  drawGrid()
+  reset.onclick()
+}
+
+let CELL_SIZE = 15; // px
+let GRID_COLOR = "#CCCCCC";
+let DEAD_COLOR = "#FFFFFF";
+let ALIVE_COLOR = "#000000";
 
 canvas.height = (CELL_SIZE + 1) * height + 1;
 canvas.width = (CELL_SIZE + 1) * width + 1;
 
-const ctx = canvas.getContext('2d');
+let ctx = canvas.getContext('2d');
 
 var run = false;
 
@@ -141,9 +156,9 @@ toggle.onclick = () => {
 
 reset.onclick = () => {
   if(preset.preset_val.value) {
-    universe = Universe.new(preset.preset_val.value)
+    universe = Universe.new(preset.preset_val.value, width, height)
   } else {
-    universe = Universe.new(999)
+    universe = Universe.new(999, width, height)
   }
   if (run) {
     toggle.onclick()
@@ -152,9 +167,6 @@ reset.onclick = () => {
 }
 
 select_preset.onclick = () => {
-  if(preset.preset_val.value) {
-    universe = Universe.new(preset.preset_val.value)
-  }
   reset.onclick()
 }
 

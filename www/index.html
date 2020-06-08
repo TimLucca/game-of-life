@@ -28,6 +28,15 @@
         <input type="radio" name="preset_val" value="3">Empty
       </form>
       <button id="preset_select">Select</button>
+      <form id="grid">
+        <p>Modify the grid</p>
+        X:         <input type="number" name="size_x" value="40" style="width: 3em;">
+        Y:         <input type="number" name="size_y" value="80" style="width: 3em;">
+        Cell Size: <input type="number" name="size_cell" value="15" style="width: 3em;">
+        Cell Color:<input type="color" name="alive_color" value="#000000">
+        BG Color:  <input type="color" name="dead_color" value="#FFFFFF">
+      </form>
+      <button id="grid_select">Select</button>
     </div>
   </div>
   <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
