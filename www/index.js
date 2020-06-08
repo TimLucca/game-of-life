@@ -5,6 +5,7 @@ import { memory } from "rust-gol/rust_gol_bg";
 const reset = document.getElementById("reset")
 const preset = document.getElementById("preset")
 const toggle = document.getElementById("toggle")
+const select_preset = document.getElementById("preset_select")
 const canvas = document.getElementById("game-of-life-canvas");
 let universe = Universe.new(2);
 const width = universe.width();
@@ -141,11 +142,20 @@ toggle.onclick = () => {
 reset.onclick = () => {
   if(preset.preset_val.value) {
     universe = Universe.new(preset.preset_val.value)
+  } else {
+    universe = Universe.new(999)
   }
   if (run) {
     toggle.onclick()
   }
   drawCells()
+}
+
+select_preset.onclick = () => {
+  if(preset.preset_val.value) {
+    universe = Universe.new(preset.preset_val.value)
+  }
+  reset.onclick()
 }
 
 canvas.addEventListener("click", e => {
